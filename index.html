@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="javascript/sidemenu.js"></script>
+	<script src="javascript/imgAnimator.js"></script>
+	<script src="javascript/screenText.js"></script>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+	<link rel="stylesheet" type="text/css" href="css/sidemenu.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn">
+</head>
+<body>
+	<div class="container bg-1  text-center">
+		<div class="row">
+			<div class="col-md-6 pictureHeader">
+				<h1 id="authorName">Victor Gonzalez</h1>	
+				<img src="images/me.png" class="myPicture" />
+			</div>
+			<div class="col-md-6">
+				<div class="menuIconBg">
+					<p hidden id="menuActive">false</p>
+					<a href="#" id="menuLink"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+				</div>
+				<div id="mySidenav" class="sidenav">
+					<div class="linkSpacing">
+						<a href="#" data-toggle="modal" data-target=".aboutModal">About</a>	
+						<a href="#" data-toggle="modal" data-target=".projectModal">Projects</a>	
+						<a href="#" data-toggle="modal" data-target=".resumeModal">Resume</a>	
+						<a href="https://github.com/rogueflynn" target="_blank">Github</a>	
+					</div>
+				</div>
+				<div id="computerText">
+				</div>
+
+				<!-- About Me MODAL -->
+				<div class="modal fade aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-lbel="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">About Me</h4>
+				      </div>
+				      <div class="modal-body">
+					      <p align="left">
+					      My name is Victor Gonzalz and I am a programmer/developer. I'm currently a Computer<br/> 
+					      Science major at Clayton State University. Most of my interests has been in web developing<br/>
+					      and database connectivity. My other interests include game development and desktop <br/>
+					      applicaton development.    
+					      <br/>
+					      <br/>
+					      A lot of my experience has been working with object oriented languages such as Java and C#.<br/>
+					      I have used these languages to create games and integrate with SQL based databases. <br/>
+					      Recently, I began exploring working with Node.js, express and NoSQL databases like MongoDB.  
+					      <br/>
+					      <br/>
+					      I believe that programming is about problem solving and using programming languages <br/>
+					      to solve problems.  I work well on team and always willing to keep learning new things</br> 
+					      My work ethic is strong and I would be a valuable asset to any company.<br/>
+					      </p> 
+					      <br/>
+					      <p align="right">-Victor Gonzalez</p>
+				      </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--END About Me MODAL -->
+
+				<!-- Projects MODAL -->
+				<div class="modal fade projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Projects</h4>
+				      </div>
+				      <div class="modal-body">
+						<div id="projectThumbs">
+							<a href="#" id="backBtn">Back</a>
+							<a href="#" id="imgOneLink"><img src="images/nightmare.PNG" class="thumbNails" id="imgOne"/></a> 	
+							<a href="#" id="imgTwoLink"><img src="images/hallucination.PNG" class="thumbNails" id="imgTwo" /></a> 	
+							<a href="#" id="imgThreeLink"><img src="images/calc.PNG" class="thumbNails" id="imgThree" /></a>	
+						</div>	
+						<div id="projectTitles">
+							<span id="titleOne">Nightmare of Frankie Stupidhead</span>
+							<span id="titleTwo">Breaking the Wall</span>
+							<span id="titleThree">Basic Calculator Program</span>
+						</div>
+						<span id="descriptionOne">
+							<br/>
+							<p>Basic platform game that I created using Gamemaker.<br/>
+							I learned about collision detection and basic physics<br/>
+							applications. I also did the animation and learned how<br/>
+							to animate sprite sheets. Since I applied screen <br/>
+							scrolling I got a better understanding of how the <br/>
+							inverse matrix works in relation to the view matrix.<br/>
+							The main improvement that I would have liked was <br/>
+							smoother animation.<br/>
+							<b>Works only on windows.</b><br/>
+							To play the demo, please download<br/>
+							<a href="projects/nightmare/nightmareofFS.zip">Click here to download</a></p>
+						</span>
+						<span id="descriptionTwo">
+							<br/>
+							<p>Platform game that used the Unity Game Engine<br/>
+							Working with a partner, the game extends the previous <br/>
+							game and adds challenging game mechanics. <br/> 
+							My main role in this project was extending the<br/> 
+							features of the previous game project and enhancing<br/> 
+							gameplay. The animation was improved from the <br/>
+						        previousversion but I had to omit the screen<br/>	
+							scrolling because of time constraints.<br/>
+							This game is best played <br/>
+							with a gamepad. To play the demo, please download<br/>
+							<b>Works only on windows.</b><br/>
+							<a href="projects/breakthewall/breakingthewall.zip">Click here to download</a></p>
+						</span>
+						<span id="descriptionThree">
+							<br/>
+							<p>Basic calculator that performs basic arithmetic<br/>
+							and is still a work in progress.<br/>
+							I learned how to build interfaces in Java and applied<br/>
+							object oriented practices. I began to understand the<br/>
+							importance of writing cleaner and resuable code.<br/>
+							The main thing that I would change is the interface<br/>
+							design itself because I learned half way through this<br/>
+							project that Java is capable of altering the appearance<br/>
+							of GUI elements.<br/>
+							To view the project, please click the link below:<br/>
+							<b>Requires Java being installed</b><br/> 
+							<a href="projects/calc/calc.zip">Click here to download</a></p>
+						</span>
+				      </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--END Projects MODAL -->
+
+				<!-- Resume modal -->
+				<div class="modal fade resumeModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-lg">
+				    <div class="modal-content">
+				      <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Resume</h4>
+				      </div>
+				      <div class="modal-body">
+					     <iframe src="web/viewer.html" width="800" height="500"></iframe> 
+				     </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--END Resume MODAL -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
