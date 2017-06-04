@@ -16,7 +16,7 @@
 
 'use strict';
 
-var DEFAULT_URL = 'victor_gonzalez_resume.pdf';
+var DEFAULT_URL = 'victor_gonzalez_resume_no_addr.pdf';
 
   var pdfjsWebLibs = {
     pdfjsWebPDFJS: window.pdfjsDistBuildPdf
