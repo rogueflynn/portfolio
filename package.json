@@ -1,0 +1,27 @@
+{
+  "name": "victors-portfolio",
+  "version": "1.0.0",
+  "description": "My portfolio",
+  "main": "index.html",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogueflynn/portfolio.git"
+  },
+  "author": "Victor Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogueflynn/portfolio/issues"
+  },
+  "homepage": "https://github.com/rogueflynn/portfolio#readme"
+}
