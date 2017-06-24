@@ -77,34 +77,56 @@ iframe {
 }
 
 .thumbNails {
-	width: 175px;
+	width: 80%;
 	height: auto;
 }
-
-#projectTitles {
-	font-size: 12px;
+.description {
+	word-wrap: break-word;
+	text-align: left;
 }
-#titleOne {
-	float: left;
-	margin-left: 17px;
-}
-
-#titleTwo {
-	float: right;
-	margin-right: 230px;
+#descriptionFooter {
+	text-align: center;
 }
 
-#titleThree {
-	float: right;
-	margin-right: 27px;
-	margin-top: -17px;
+.projectThumbs {
+	visibility: visible;
+	width: 100%;
+	height: 140px;
+	overflow-y: scroll;
 }
-
-#descriptionOne {
-	float: left;
-	opacity: 0.0;
+.projectOne {
+	display: none;
+	width: 100%;
+	height: auto; 
 	display: none;
 }
+
+.projectTwo {
+	display: none;
+	width: 100%;
+	height: auto; 
+	display: none;
+}
+.projectThree {
+	display: none;
+	width: 100%;
+	height: auto; 
+	display: none;
+}
+#projectTitle {
+	text-align: center;
+	font-size: 100%;
+	word-wrap: break-word;
+}
+table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+td {
+	width: 100px;
+}
+
 #descriptionTwo {
 	float: left;
 	opacity: 0.0;

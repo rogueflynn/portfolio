@@ -93,61 +93,133 @@
 					<h4 class="modal-title" id="myModalLabel">Projects</h4>
 				      </div>
 				      <div class="modal-body">
-						<div id="projectThumbs">
-							<a href="#" id="backBtn">Back</a>
-							<a href="#" id="imgOneLink"><img src="images/nightmare.PNG" class="thumbNails" id="imgOne"/></a> 	
-							<a href="#" id="imgTwoLink"><img src="images/hallucination.PNG" class="thumbNails" id="imgTwo" /></a> 	
-							<a href="#" id="imgThreeLink"><img src="images/calc.PNG" class="thumbNails" id="imgThree" /></a>	
+						<a href="#" id="backBtn">Back</a>
+						<div class="projectThumbs">
+							<table>
+								<tr>
+									<th>
+										<p id="projectTitle">Nightmare of Frankie Stupidhead</p>
+									</th>	
+									<th>
+										<p id="projectTitle">Breaking the Wall</p>
+									</th>	
+									<th>
+										<p id="projectTitle">Basic Calculator Program</span>
+									</th>	
+								</tr>
+								<tr>
+									<td>
+										<a href="#" id="imgOneLink">
+											<img src="images/nightmare.PNG" class="thumbNails" />
+										</a> 	
+									</td>	
+									<td>
+										<a href="#" id="imgTwoLink">
+											<img src="images/hallucination.PNG" class="thumbNails" />
+										</a> 	
+									</td>	
+									<td>
+										<a href="#" id="imgThreeLink">
+											<img src="images/calc.PNG" class="thumbNails" />
+										</a>	
+									</td>	
+								</tr>
+								<!--
+									Table Template
+									<th>
+										<p id="projectTitle"></p>
+									</th>
+									<th>
+										<p id="projectTitle"></p>
+									</th>
+									<th>
+										<p id="projectTitle"></p>
+									</th>
+									<td>
+										<a href="#" id="">
+											<img src="" class="thumbNails" id="imgThree" />
+										</a>	
+									</td>
+									<td>
+										<a href="#" id="">
+											<img src="" class="thumbNails" id="imgThree" />
+										</a>	
+									</td>
+									<td>
+										<a href="#" id="">
+											<img src="" class="thumbNails" id="imgThree" />
+										</a>	
+									</td>
+								-->
+							</table>
 						</div>	
-						<div id="projectTitles">
-							<span id="titleOne">Nightmare of Frankie Stupidhead</span>
-							<span id="titleTwo">Breaking the Wall</span>
-							<span id="titleThree">Basic Calculator Program</span>
+						<div class="projectOne">
+								<img src="images/nightmare.PNG" />
+								<br/>
+								<p class="description">Basic platform game that I created using Gamemaker.
+								I learned about collision detection and basic physics
+								applications. I also did the animation and learned how
+								to animate sprite sheets. Since I applied screen 
+								scrolling I got a better understanding of how the 
+								inverse matrix works in relation to the view matrix.
+								The main improvement that I would have liked was 
+								smoother animation.<br/>
+								<div id="descriptionFooter">
+									<b>Works only on windows.</b><br/>
+									To play the demo, please download<br/>
+									<a href="projects/nightmare/nightmareofFS.zip">Click here to download</a></p>
+								</div>
 						</div>
-						<span id="descriptionOne">
+						<div class="projectTwo">
+							<img src="images/hallucination.PNG" />
 							<br/>
-							<p>Basic platform game that I created using Gamemaker.<br/>
-							I learned about collision detection and basic physics<br/>
-							applications. I also did the animation and learned how<br/>
-							to animate sprite sheets. Since I applied screen <br/>
-							scrolling I got a better understanding of how the <br/>
-							inverse matrix works in relation to the view matrix.<br/>
-							The main improvement that I would have liked was <br/>
-							smoother animation.<br/>
-							<b>Works only on windows.</b><br/>
-							To play the demo, please download<br/>
-							<a href="projects/nightmare/nightmareofFS.zip">Click here to download</a></p>
-						</span>
-						<span id="descriptionTwo">
+							<p class="description">Platform game that used the Unity Game Engine
+							Working with a partner, the game extends the previous 
+							game and adds challenging game mechanics. 
+							My main role in this project was extending the
+							features of the previous game project and enhancing
+							gameplay. The animation was improved from the 
+							previousversion but I had to omit the screen
+							scrolling because of time constraints.
+							This game is best played 
+							with a gamepad. To play the demo, please download
+							<div id="descriptionFooter">
+								<b>Works only on windows.</b><br/>
+								<a href="projects/breakthewall/breakingthewall.zip">Click here to download</a></p>
+							</div>
+						</div>
+						<div class="projectThree">
+							<img src="images/calc.PNG" />
 							<br/>
-							<p>Platform game that used the Unity Game Engine<br/>
-							Working with a partner, the game extends the previous <br/>
-							game and adds challenging game mechanics. <br/> 
-							My main role in this project was extending the<br/> 
-							features of the previous game project and enhancing<br/> 
-							gameplay. The animation was improved from the <br/>
-						        previousversion but I had to omit the screen<br/>	
-							scrolling because of time constraints.<br/>
-							This game is best played <br/>
-							with a gamepad. To play the demo, please download<br/>
-							<b>Works only on windows.</b><br/>
-							<a href="projects/breakthewall/breakingthewall.zip">Click here to download</a></p>
-						</span>
-						<span id="descriptionThree">
-							<br/>
-							<p>Basic calculator that performs basic arithmetic<br/>
-							and is still a work in progress.<br/>
-							I learned how to build interfaces in Java and applied<br/>
-							object oriented practices. I began to understand the<br/>
-							importance of writing cleaner and resuable code.<br/>
-							The main thing that I would change is the interface<br/>
-							design itself because I learned half way through this<br/>
-							project that Java is capable of altering the appearance<br/>
-							of GUI elements.<br/>
+							<p class="description">Basic calculator that performs basic arithmetic
+							and is still a work in progress.
+							I learned how to build interfaces in Java and applied
+							object oriented practices. I began to understand the
+							importance of writing cleaner and resuable code.
+							The main thing that I would change is the interface
+							design itself because I learned half way through this
+							project that Java is capable of altering the appearance
+							of GUI elements.
 							To view the project, please click the link below:<br/>
-							<b>Requires Java being installed</b><br/> 
-							<a href="projects/calc/calc.zip">Click here to download</a></p>
-						</span>
+							<div id="descriptionFooter">
+								<b>Requires Java being installed</b><br/> 
+								<a href="projects/calc/calc.zip">Click here to download</a></p>
+							</div>
+						</div>
+						<!--
+						Project Template
+						<div class="">
+							<img src="" />
+							<br/>
+							<p class="description">
+							<br/>
+							<div id="descriptionFooter">
+								<b></b><br/> 
+								<a href="">Click here to download</a></p>
+							</div>
+						</div>
+
+						-->
 				      </div>
 				      <div class="modal-footer">
 				      </div>
