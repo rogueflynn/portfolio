@@ -113,6 +113,28 @@ iframe {
 	height: auto; 
 	display: none;
 }
+
+.projectFour {
+	display: none;
+	width: 100%;
+	height: auto; 
+	display: none;
+}
+
+.projectFive {
+	display: none;
+	width: 100%;
+	height: auto; 
+	display: none;
+}
+
+.projectSix {
+	display: none;
+	width: 100%;
+	height: auto; 
+	display: none;
+}
+
 #projectTitle {
 	text-align: center;
 	font-size: 100%;

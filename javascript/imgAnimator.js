@@ -1,17 +1,27 @@
 $(document).ready(function() {
 	//Animate first project 
 	$("#imgOneLink").click(function() {
-		displayProjectInfo(".projectOne", "Nightmare of Frankie Stupidhead");
+		displayProjectInfo(".projectOne", "Move It! Colors");
 	});
 
-	//Show second project 
 	$("#imgTwoLink").click(function() {
-		displayProjectInfo(".projectTwo", "Breaking the Wall");
+		displayProjectInfo(".projectTwo", "OctoPlus");
 	});
 
-	//Animate third project 
 	$("#imgThreeLink").click(function() {
-		displayProjectInfo(".projectThree", "Basic Calculator Program");
+		displayProjectInfo(".projectThree", "STEMDash App");
+	});
+
+	$("#imgFourLink").click(function() {
+		displayProjectInfo(".projectFour", "STEMDashWeb");
+	});
+
+	$("#imgFiveLink").click(function() {
+		displayProjectInfo(".projectFive", "Nightmare of Frankie Stupidhead" );
+	});
+
+	$("#imgSixLink").click(function() {
+		displayProjectInfo(".projectSix", "Breaking the Wall");
 	});
 
 	//Back Button
@@ -20,6 +30,9 @@ $(document).ready(function() {
 		$(".projectOne").css("display", "none");
 		$(".projectTwo").css("display", "none");
 		$(".projectThree").css("display", "none");
+		$(".projectFour").css("display", "none");
+		$(".projectFive").css("display", "none");
+		$(".projectSix").css("display", "none");
 		$("#backBtn").css("display", "none");
 		$(".modal-title").html("Projects");
 	});
