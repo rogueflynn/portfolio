@@ -1,6 +1,11 @@
 import sideMenuStyles from './css/sidemenu.css';
 import React from 'react';
 import Modal from './Modal.js';
+import {Carousel} from "react-responsive-carousel";
+import MoveItIcon from "./images/moveiticon2.png";
+import OctoplusIcon from "./images/octoplusicon.png";
+import StemdashIcon from "./images/stemdashicon.png";
+import carouselStyle from 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 class HamburgerMenuBtn extends React.Component {
     render() {
@@ -14,11 +19,96 @@ class HamburgerMenuBtn extends React.Component {
     }
 }
 
+class AboutMe extends React.Component {
+    render() {
+        const AboutStyle = {
+            marginLeft: "2%"
+        }
+        const authStyle = {
+            float: "right",
+            marginRight: "2%",
+            fontWeight: "bold"
+        }
+        return(
+            <section>
+            <p style={AboutStyle}>
+            My name is Victor Gonzalz and I am a programmer/developer. I majored in Computer
+            Science in 2016. Most of my area interests has been in web developing
+            and database connectivity. My other interests include game development and desktop 
+            applicaton development.    
+            <br/>
+            <br/>
+            A lot of my experience has been working with Node.js but I also have experience with 
+            object oriented languages such as Java and C#. My projects have ranged from web applications to modular
+            components integrated with existing applications.  
+            <br/>
+            <br/>
+            I believe that programming is about problem solving and programming languages are tools
+            to solve problems.  I work well on teams and always keep learning new things.
+            My work ethic is strong and I would be a valuable asset to any company.
+            </p> 
+            <br/>
+            <p style={authStyle}>-Victor Gonzalez</p>
+            </section>
+
+        );
+    }
+
+}
+
+class Projects extends React.Component {
+    render() {
+        const projectIcons = {
+            width: "40%",
+            height: "auto"
+        }
+        return(
+            <section>
+            <Carousel
+                showThumbs={false}
+            >
+                <div>
+                    <img style={projectIcons} alt="moveit" src={MoveItIcon} />
+                    <p className="legend">Move It! Colors</p>
+                </div>
+                <div>
+                    <img style={projectIcons} alt="octoplus" src={OctoplusIcon} />
+                    <p className="legend">OctoPlus</p>
+                </div>
+                <div>
+                    <img style={projectIcons} alt="stemdash" src={StemdashIcon} />
+                    <p className="legend">STEMDash</p>
+                </div>
+            </Carousel> 
+            <p>Info text will go in this block</p>
+            </section>
+        );
+    }
+
+}
+
+class Resume extends React.Component {
+    render() {
+        return(
+            <h1>My resume page</h1>
+        );
+    }
+
+}
+
 class ModalPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            about: <AboutMe />,
+            projects: <Projects />,
+            resume: <Resume />
+        };
+    }
     render() {
         return ( 
             <section>
-                <h1>{this.props.modalPage}</h1>            
+                {this.state[this.props.modalPage]}
             </section>
         );
     }
