@@ -6,6 +6,7 @@ import MoveItIcon from "./images/moveiticon2.png";
 import OctoplusIcon from "./images/octoplusicon.png";
 import StemdashIcon from "./images/stemdashicon.png";
 import carouselStyle from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import FontAwesome from 'react-fontawesome';
 
 class HamburgerMenuBtn extends React.Component {
     render() {
@@ -57,30 +58,91 @@ class AboutMe extends React.Component {
 }
 
 class Projects extends React.Component {
+    constructor(props) {
+        super(props);
+        this.projectDescriptions = [
+            `I contributed to this mobile game project.  I created the tutorial and integrated the login
+            and signup backend code as well as a timer feature that logs how long a child has spent playing
+            the game and saves their score to a database.`,
+
+            `This is an educational mobile game that teaches children how to add.  I contributed by integrating 
+            the previousiously built login and signup backend code.  I also added a client that receives 
+            chat messages in real time and sticker support that displays on the chat boxes.`,
+
+            `This is the central point of that connects all of the Zyrobotics games together.  The app utitlizes
+            a client connection to a server and is used to send messages to children playing on particular games. 
+            I also added the ability to have the app update in real time using the client and server connection.
+            I contributed to some of the UI and added adjustments as needed for different platforms.`
+        ];
+        this.state = {
+            currentSlide: 0,
+            projectDescription: this.projectDescriptions[0] 
+        }
+        this.next = this.next.bind(this);
+        this.prev = this.prev.bind(this);
+    }
+
+    next() {
+        let Slide = this.state.currentSlide;
+        Slide = this.state.currentSlide !== 2 ? this.state.currentSlide + 1 : 2;
+        this.setState({
+            currentSlide: Slide,
+            projectDescription: this.projectDescriptions[Slide]
+        });         
+    }
+
+    prev() {
+        let Slide = this.state.currentSlide;
+        Slide = this.state.currentSlide !== 0 ? this.state.currentSlide - 1 : 0;
+        this.setState({
+            currentSlide: Slide,
+            projectDescription: this.projectDescriptions[Slide]
+        });
+    }
+
     render() {
         const projectIcons = {
             width: "40%",
             height: "auto"
         }
+        const prevStyle = {
+            "position": "relative",
+            "float": "left",
+            "bottom": "100px",
+            "height": "100px",
+            "zIndex": "9"
+        }
+        const nextStyle = {
+            "position": "relative",
+            "float": "right",
+            "bottom": "100px",
+            "height": "100px",
+            "zIndex": "9"
+        }
         return(
             <section>
-            <Carousel
-                showThumbs={false}
-            >
-                <div>
-                    <img style={projectIcons} alt="moveit" src={MoveItIcon} />
-                    <p className="legend">Move It! Colors</p>
-                </div>
-                <div>
-                    <img style={projectIcons} alt="octoplus" src={OctoplusIcon} />
-                    <p className="legend">OctoPlus</p>
-                </div>
-                <div>
-                    <img style={projectIcons} alt="stemdash" src={StemdashIcon} />
-                    <p className="legend">STEMDash</p>
-                </div>
-            </Carousel> 
-            <p>Info text will go in this block</p>
+                <Carousel
+                    showThumbs={false}
+                    showArrows={false}
+                    selectedItem={this.state.currentSlide}
+                >
+                    <div>
+                        <img style={projectIcons} alt="moveit" src={MoveItIcon} />
+                        <p className="legend">Move It! Colors</p>
+                    </div>
+                    <div>
+                        <img style={projectIcons} alt="octoplus" src={OctoplusIcon} />
+                        <p className="legend">OctoPlus</p>
+                    </div>
+                    <div>
+                        <img style={projectIcons} alt="stemdash" src={StemdashIcon} />
+                        <p className="legend">STEMDash</p>
+                    </div>
+                </Carousel> 
+                <button style={prevStyle} onClick={this.prev}>Prev</button>
+                <button style={nextStyle} onClick={this.next}>Next</button>
+                <p>{this.state.projectDescription}</p>
+                <FontAwesome name="rocket" />
             </section>
         );
     }
