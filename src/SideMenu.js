@@ -1,12 +1,20 @@
 import sideMenuStyles from './css/sidemenu.css';
 import React from 'react';
 import Modal from './Modal.js';
+import myResume from "./assets/victor_gonzalez_resume_no_addr.pdf";
 import {Carousel} from "react-responsive-carousel";
 import MoveItIcon from "./images/moveiticon2.png";
 import OctoplusIcon from "./images/octoplusicon.png";
 import StemdashIcon from "./images/stemdashicon.png";
+import StemdashWebIcon from "./images/stemdashWeb.png";
+import nighmareIcon from "./images/nightmare.PNG";
+import hallucinationIcon from "./images/hallucination.PNG";
+import turtleIcon from "./images/turtleicon.png";
 import carouselStyle from 'react-responsive-carousel/lib/styles/carousel.min.css';
-import FontAwesome from 'react-fontawesome';
+import {Document, Page} from 'react-pdf';
+import fileDownload from 'react-file-download';
+import nightmareData from './projects/nightmare/nightmareofFS.zip';
+import hallucinationData from './projects/breakthewall/breakingthewall.zip';
 
 class HamburgerMenuBtn extends React.Component {
     render() {
@@ -72,33 +80,89 @@ class Projects extends React.Component {
             `This is the central point of that connects all of the Zyrobotics games together.  The app utitlizes
             a client connection to a server and is used to send messages to children playing on particular games. 
             I also added the ability to have the app update in real time using the client and server connection.
-            I contributed to some of the UI and added adjustments as needed for different platforms.`
+            I contributed to some of the UI and added adjustments as needed for different platforms.`,
+
+            `Tommy the Turtle is a mobile game that teaches children how to code.  I fixed issues with how the 
+            code is displayed in the terminal window and added a load and a save code feature to the game.  A
+            child has the ability to save code to a server and load it back in from any device.
+            `,
+
+            `This is the companion web site to the STEMDash mobile app.  It has much of the same features 	
+            as the mobile app but utilizes many modern web technologies.  I did all of the web design, html,
+            javascript, backend code and database connectivity.  The web site was also designed to be mobile 
+            friendly.
+            `,
+
+            `Basic platform game that I created using Gamemaker. I learned about collision detection and basic physics
+            applications. I also did the animation and learned how to animate sprite sheets. Since I applied screen 
+            scrolling I got a better understanding of how the inverse matrix works in relation to the view matrix.
+            The main improvement that I would have liked was smoother animation.`,
+
+            `Platform game that used the Unity Game Engine. Working with a partner, the game extends the previous 
+            game and adds challenging game mechanics. My main role in this project was extending the
+            features of the previous game project and enhancing gameplay. The animation was improved from the 
+            previous version but I had to omit the scrolling because of time constraints.
+            `
         ];
         this.state = {
             currentSlide: 0,
+            downloadMessage: "",
+            downloadLink: "",
+            hyperLinkMsg: "",
+            display: "none",
             projectDescription: this.projectDescriptions[0] 
         }
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
+        this.downloadFile = this.downloadFile.bind(this);
     }
 
     next() {
         let Slide = this.state.currentSlide;
-        Slide = this.state.currentSlide !== 2 ? this.state.currentSlide + 1 : 2;
+        let lastElement = this.projectDescriptions.length - 1;
+        let message = "", linkMsg = "", display = "none";
+        Slide = this.state.currentSlide !== lastElement ? this.state.currentSlide + 1 : lastElement;
+        if(Slide === 5 || Slide === 6) { 
+            message = "Works only on Windows";
+            linkMsg = "Click here to download";
+            display = "block";
+        } 
+
         this.setState({
             currentSlide: Slide,
+            downloadMessage: message,
+            hyperLinkMsg: linkMsg,
+            display: display,
             projectDescription: this.projectDescriptions[Slide]
         });         
     }
 
     prev() {
         let Slide = this.state.currentSlide;
+        let message = "", linkMsg = "", display = "none";
         Slide = this.state.currentSlide !== 0 ? this.state.currentSlide - 1 : 0;
+        if(Slide === 5 || Slide === 6) { 
+            message = "Works only on Windows";
+            linkMsg = "Click here to download";
+            display = "block";
+        } 
         this.setState({
             currentSlide: Slide,
+            downloadMessage: message,
+            hyperLinkMsg: linkMsg,
+            display: display,
             projectDescription: this.projectDescriptions[Slide]
-        });
+        });         
     }
+
+    downloadFile() {
+        if(this.state.currentSlide === 5) {
+            fileDownload(nightmareData, "nightmareofFS.zip");
+        }
+        if(this.state.currentSlide === 6) {
+            fileDownload(hallucinationData, "breakingthewall.zip");
+        }
+    } 
 
     render() {
         const projectIcons = {
@@ -119,6 +183,13 @@ class Projects extends React.Component {
             "height": "100px",
             "zIndex": "9"
         }
+
+        const downloadLinkStyle = {
+            "marginLeft": "20%"
+        }
+        const downloadBtn = {
+            "display": this.state.display 
+        }
         return(
             <section>
                 <Carousel
@@ -134,15 +205,39 @@ class Projects extends React.Component {
                         <img style={projectIcons} alt="octoplus" src={OctoplusIcon} />
                         <p className="legend">OctoPlus</p>
                     </div>
+
                     <div>
                         <img style={projectIcons} alt="stemdash" src={StemdashIcon} />
                         <p className="legend">STEMDash</p>
                     </div>
+
+                    <div>
+                        <img style={projectIcons} alt="tommyturtle" src={turtleIcon} />
+                        <p className="legend">Tommy the Turtle</p>
+                    </div>
+
+                    <div>
+                        <img style={projectIcons} alt="stemdashweb" src={StemdashWebIcon} />
+                        <p className="legend">STEMDash Web</p>
+                    </div>
+                    <div>
+                        <img style={projectIcons} alt="nighmare" src={nighmareIcon} />
+                        <p className="legend">Nighmare of Frankie Stupidhead</p> 
+                    </div>
+                    <div>
+                        <img style={projectIcons} alt="hallucination" src={hallucinationIcon} />
+                        <p className="legend">Breaking the Wall</p> 
+                    </div>
                 </Carousel> 
                 <button style={prevStyle} onClick={this.prev}>Prev</button>
                 <button style={nextStyle} onClick={this.next}>Next</button>
-                <p>{this.state.projectDescription}</p>
-                <FontAwesome name="rocket" />
+                <p>
+                    {this.state.projectDescription} <br/>
+                </p>
+                <p style={downloadLinkStyle}>
+                    <b>{this.state.downloadMessage}</b> <button style= {downloadBtn} onClick={this.downloadFile}>{this.state.hyperLinkMsg}</button>
+                </p>
+                <br/>
             </section>
         );
     }
@@ -150,9 +245,31 @@ class Projects extends React.Component {
 }
 
 class Resume extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            numPages: null,
+            pageNumber: 1
+        };
+    }
+     
+      onDocumentLoad = ({ numPages }) => {
+        this.setState({ numPages });
+      }
     render() {
+        const pdfStyle = {
+            "overflowY": "scroll",
+            "width": "100%",
+            "height": "400px"
+        }
         return(
-            <h1>My resume page</h1>
+            <div style={pdfStyle}>
+                <Document file={myResume} 
+                onLoadSuccess={this.onDocumentLoad} 
+                >
+                <Page pageNumber={this.state.pageNumber} />
+                </Document>
+            </div>
         );
     }
 

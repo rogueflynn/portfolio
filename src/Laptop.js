@@ -34,10 +34,10 @@ class ComputerText extends React.Component {
             <div id="computerText" style={this.props.display}>
                 {this.state.text.split('\n').map((item, key) => {
                     return (
-                            <span key={key}>
-                                {item}
-                                <br/>
-                            </span>
+                        <span key={key}>
+                            {item}
+                            <br/>
+                        </span>
                     );
                 })}
             </div>
