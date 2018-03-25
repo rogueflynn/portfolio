@@ -28,6 +28,7 @@
 /* The navigation menu links */
 :local(.sidenav) button{
     color: #f1f1f1;
+    font-family: "Times New Roman", Times, serif;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 200%;
@@ -38,8 +39,9 @@
 }
 
 /* When you mouse over the navigation links, change their color */
-:local(.sidenav) a:hover, .offcanvas a:focus{
+:local(.sidenav) button:hover, .offcanvas button:focus{
     color: #818181;
+    cursor: pointer;
 }
 
 /* Position and style the close button (top right corner) */
@@ -62,6 +64,7 @@
     background-color: white;
     margin: 6px 0;
 }
+
 :local(.menuIconBG) {
 	color: white;
 	font-size: 2.0em;
@@ -81,6 +84,8 @@
 
 	border-radius: 12px;
 }
+
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

@@ -10,7 +10,8 @@ import StemdashWebIcon from "./images/stemdashWeb.png";
 import nighmareIcon from "./images/nightmare.PNG";
 import hallucinationIcon from "./images/hallucination.PNG";
 import turtleIcon from "./images/turtleicon.png";
-import carouselStyle from 'react-responsive-carousel/lib/styles/carousel.min.css';
+//eslint-disable-next-line
+import carouselStyle from 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 import {Document, Page} from 'react-pdf';
 import fileDownload from 'react-file-download';
 import nightmareData from './projects/nightmare/nightmareofFS.zip';
@@ -306,6 +307,8 @@ export class SideMenu extends React.Component {
         this.handleMenu = this.handleMenu.bind(this);
         this.updateDimensions = this.updateDimensions.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.openGitHub  = this.openGitHub.bind(this);
+        this.openLinkedIn  = this.openLinkedIn.bind(this);
         this.titles = {
                         about: "About Me",
                         projects: "Projects",
@@ -346,6 +349,14 @@ export class SideMenu extends React.Component {
         }
     }
 
+    openGitHub() {
+        window.open("https://github.com/rogueflynn", "_blank");
+    }
+
+    openLinkedIn() {
+        window.open("https://www.linkedin.com/in/vgonzalez2/", "_blank");
+    }
+
     handleMenu() {
         if(this.state.height === "0") {
             this.setState({
@@ -373,7 +384,8 @@ export class SideMenu extends React.Component {
                         <button onClick={() => this.toggleModal("about")}>About</button>
                         <button onClick={() => this.toggleModal("projects")}>Projects</button>
                         <button onClick={() => this.toggleModal("resume")}>Resume</button>
-                        <a href="https://github.com/rogueflynn" target="_blank" rel="noopener noreferrer">Github</a>
+                        <button onClick={this.openGitHub}>GitHub</button>
+                        <button onClick={this.openLinkedIn}>LinkedIn</button>
                     </div>
                 </div>
                 
