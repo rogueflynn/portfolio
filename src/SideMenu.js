@@ -10,6 +10,8 @@ import StemdashWebIcon from "./images/stemdashWeb.png";
 import nighmareIcon from "./images/nightmare.PNG";
 import hallucinationIcon from "./images/hallucination.PNG";
 import turtleIcon from "./images/turtleicon.png";
+import leftArrow from "./images/leftArrow.png";
+import rightArrow from "./images/rightArrow.png";
 //eslint-disable-next-line
 import carouselStyle from 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 import {Document, Page} from 'react-pdf';
@@ -110,6 +112,8 @@ class Projects extends React.Component {
             downloadMessage: "",
             downloadLink: "",
             hyperLinkMsg: "",
+            prevColor: "transparent",
+            nextColor: "transparent",
             display: "none",
             projectDescription: this.projectDescriptions[0] 
         }
@@ -123,6 +127,7 @@ class Projects extends React.Component {
         let lastElement = this.projectDescriptions.length - 1;
         let message = "", linkMsg = "", display = "none";
         Slide = this.state.currentSlide !== lastElement ? this.state.currentSlide + 1 : lastElement;
+
         if(Slide === 5 || Slide === 6) { 
             message = "Works only on Windows";
             linkMsg = "Click here to download";
@@ -172,17 +177,34 @@ class Projects extends React.Component {
         }
         const prevStyle = {
             "position": "relative",
+            "backgroundColor": this.state.prevColor,
+            "color": "white",
             "float": "left",
-            "bottom": "100px",
-            "height": "100px",
+            "bottom": "200px",
+            "width": "8%",
+            "height": "200px",
+            "outline": "none",
+            "borderRadius": "4px",
+            "cursor": "pointer",
             "zIndex": "9"
         }
         const nextStyle = {
             "position": "relative",
+            "backgroundColor": "transparent",
+            "color": "white",
             "float": "right",
-            "bottom": "100px",
-            "height": "100px",
+            "bottom": "200px",
+            "width": "8%",
+            "height": "200px",
+            "outline": "none",
+            "borderRadius": "4px",
+            "cursor": "pointer",
             "zIndex": "9"
+        }
+
+        const arrowStyle = {
+            "width": "80%",
+            "height": "auto",
         }
 
         const downloadLinkStyle = {
@@ -230,8 +252,12 @@ class Projects extends React.Component {
                         <p className="legend">Breaking the Wall</p> 
                     </div>
                 </Carousel> 
-                <button style={prevStyle} onClick={this.prev}>Prev</button>
-                <button style={nextStyle} onClick={this.next}>Next</button>
+                <button style={prevStyle} onClick={this.prev} onMouseEnter={this.prevHover } onMouseLeave={this.prevHover} >
+                    <img style={arrowStyle} src={leftArrow} alt="Previous" />
+                </button>
+                <button style={nextStyle} onClick={this.next} >
+                    <img style={arrowStyle} src={rightArrow} alt="Next" />
+                </button>
                 <p>
                     {this.state.projectDescription} <br/>
                 </p>
