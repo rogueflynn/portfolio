@@ -124,6 +124,9 @@ class Projects extends React.Component {
             "https://play.google.com/store/apps/details?id=com.Zyrobotics.TommyTurtle&hl=en"
 
         ];
+        this.webLinks = [
+            "https://stemdash.com"
+        ];
         this.state = {
             currentSlide: 0,
             downloadMessage: "",
@@ -135,71 +138,66 @@ class Projects extends React.Component {
             badgeDisplay: "badgeDisplay",
             appleLink: this.appleLinks[0],
             googleLink: this.googleLinks[0],
+            webLink: this.webLinks[0],
+            webLinkDisplay: "none",
             projectDescription: this.projectDescriptions[0] 
         }
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
+        this.changeHandler = this.changeHandler.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
+    }
+
+    handleSlideChange(Slide) {
+            let message = "", 
+                linkMsg = "", 
+                display = "none", 
+                badgeDisplay = "block", webLink = "", webLinkShow = "none";
+            if(Slide >= 0 && Slide < 4) {
+                this.setState({
+                    appleLink: this.appleLinks[Slide],
+                    googleLink: this.googleLinks[Slide]
+                });
+            } else if(Slide === 5 || Slide === 6) { 
+                message = "Works only on Windows";
+                linkMsg = "Click here to download";
+                display = "block";
+                badgeDisplay = "none";
+            } else if(Slide === 4) {
+                badgeDisplay = "none";
+                webLink = this.webLinks[0];
+                webLinkShow = "block";
+            }
+
+            this.setState({
+                currentSlide: Slide,
+                downloadMessage: message,
+                hyperLinkMsg: linkMsg,
+                display: display,
+                webLinkDisplay: webLinkShow,
+                webLink: webLink,
+                badgeDisplay: badgeDisplay, 
+                projectDescription: this.projectDescriptions[Slide]
+            });         
+    }
+
+    changeHandler(index, element) {
+        if(index !== this.state.currentSlide) {
+            this.handleSlideChange(index);
+        }
     }
 
     next() {
         let Slide = this.state.currentSlide;
         let lastElement = this.projectDescriptions.length - 1;
-        let message = "", linkMsg = "", display = "none", badgeDisplay = "block";
         Slide = this.state.currentSlide !== lastElement ? this.state.currentSlide + 1 : lastElement;
-
-        if(Slide >= 0 && Slide < 4) {
-            this.setState({
-                appleLink: this.appleLinks[Slide],
-                googleLink: this.googleLinks[Slide]
-            });
-        } else if(Slide === 5 || Slide === 6) { 
-            message = "Works only on Windows";
-            linkMsg = "Click here to download";
-            display = "block";
-            badgeDisplay = "none";
-        } else if(Slide === 4) {
-            badgeDisplay = "none";
-        }
-
-        this.setState({
-            currentSlide: Slide,
-            downloadMessage: message,
-            hyperLinkMsg: linkMsg,
-            display: display,
-            badgeDisplay: badgeDisplay, 
-            projectDescription: this.projectDescriptions[Slide]
-        });         
+        this.handleSlideChange(Slide);
     }
 
     prev() {
         let Slide = this.state.currentSlide;
-        let message = "", linkMsg = "", display = "none", badgeDisplay = "block";
         Slide = this.state.currentSlide !== 0 ? this.state.currentSlide - 1 : 0;
-
-        if(Slide >= 0 && Slide < 4) {
-            this.setState({
-                appleLink: this.appleLinks[Slide],
-                googleLink: this.googleLinks[Slide]
-            });
-        } else if(Slide === 5 || Slide === 6) { 
-            message = "Works only on Windows";
-            linkMsg = "Click here to download";
-            display = "block";
-            badgeDisplay = "none";
-        } else if(Slide === 4) {
-            badgeDisplay = "none";
-        }
-
-
-        this.setState({
-            currentSlide: Slide,
-            downloadMessage: message,
-            hyperLinkMsg: linkMsg,
-            display: display,
-            badgeDisplay: badgeDisplay,
-            projectDescription: this.projectDescriptions[Slide]
-        });         
+        this.handleSlideChange(Slide);
     }
 
     downloadFile() {
@@ -221,9 +219,9 @@ class Projects extends React.Component {
             "backgroundColor": this.state.prevColor,
             "color": "white",
             "float": "left",
-            "bottom": "200px",
+            "marginTop": "-30%",
             "width": "8%",
-            "height": "200px",
+            "height": "80px",
             "outline": "none",
             "borderRadius": "4px",
             "cursor": "pointer",
@@ -234,9 +232,9 @@ class Projects extends React.Component {
             "backgroundColor": "transparent",
             "color": "white",
             "float": "right",
-            "bottom": "200px",
+            "marginTop": "-30%",
             "width": "8%",
-            "height": "200px",
+            "height": "80px",
             "outline": "none",
             "borderRadius": "4px",
             "cursor": "pointer",
@@ -249,8 +247,13 @@ class Projects extends React.Component {
         }
 
         const arrowStyle = {
-            "width": "80%",
-            "height": "auto"
+            "position": "absolute",
+            "top": "50%",
+            "left": "50%",
+            "marginTop": "-15px",
+            "marginLeft": "-15px",
+            "width": "30px",
+            "height": "30px"
         }
 
         const downloadLinkStyle = {
@@ -266,7 +269,23 @@ class Projects extends React.Component {
 
         const badgeStyle = {
             "width": "100%",
+            "marginLeft": "4%",
             "display": this.state.badgeDisplay
+        }
+        const appleBadgeStyle = {
+            "display": "inline-block",
+            "paddingBottom": "9px"
+        }
+        const webLinkStyle = {
+            "textAlign": "center",
+            "display": this.state.webLinkDisplay
+        }
+        const anchorStyle = {
+            "backgroundColor": "black",
+            "fontSize": "1.5em",
+            "textDecoration": "none",
+            "padding": "14px 14px",
+            "color": "white"
         }
         return(
             <section>
@@ -274,6 +293,7 @@ class Projects extends React.Component {
                     showThumbs={false}
                     showArrows={false}
                     selectedItem={this.state.currentSlide}
+                    onChange={this.changeHandler}
                 >
                     <div>
                         <img style={projectIcons} alt="moveit" src={MoveItIcon} />
@@ -308,19 +328,29 @@ class Projects extends React.Component {
                     </div>
                 </Carousel> 
                 <div style={carouselButtons}>
-                <button style={prevStyle} onClick={this.prev} onMouseEnter={this.prevHover } onMouseLeave={this.prevHover} >
-                    <img style={arrowStyle} src={leftArrow} alt="Previous" />
-                </button>
-                <button style={nextStyle} onClick={this.next} >
-                    <img style={arrowStyle} src={rightArrow} alt="Next" />
-                </button>
+                    <button style={prevStyle} onClick={this.prev} onMouseEnter={this.prevHover } onMouseLeave={this.prevHover} >
+                        <img style={arrowStyle} src={leftArrow} alt="Previous" />
+                    </button>
+                    <button style={nextStyle} onClick={this.next} >
+                        <img style={arrowStyle} src={rightArrow} alt="Next" />
+                    </button>
                 </div>
                 <p>
                     {this.state.projectDescription} <br/>
                 </p>
+
+                <div style={webLinkStyle} >
+                    <br />
+                    <a href={this.state.webLink} style={anchorStyle} target="_blank">Visit</a>
+                </div>
+
                 <div style={badgeStyle}>
-                    <a href={this.state.appleLink} target="_blank"><img src={appleBadge} alt="Apple Badge" /></a>
-                    <a href={this.state.googleLink} target="_blank"><img src={googlePayBadge} alt="Google Play Badge"/></a>
+                    <a href={this.state.appleLink} target="_blank">
+                        <img src={appleBadge} style={appleBadgeStyle} alt="Apple Badge" />
+                    </a>
+                    <a href={this.state.googleLink}  target="_blank">
+                        <img src={googlePayBadge} alt="Google Play Badge"/>
+                    </a>
                 </div>
                 <p style={downloadLinkStyle}>
                     <b>{this.state.downloadMessage}</b> 
